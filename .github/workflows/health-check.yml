@@ -1,0 +1,33 @@
+
+name: Ubuntu Health Check CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  health-check:
+    name: Test on Ubuntu Runner
+
+    runs-on: [self-hosted, linux, x64]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check Bash availability
+        run: bash --version
+
+      - name: Validate Bash syntax
+        run: bash -n scripts/health_check.sh
+
+      - name: Run health-check tests
+        run: bash tests/test_health_check.sh
+
+      - name: Run system health check
+        run: bash scripts/health_check.sh
