@@ -3,7 +3,7 @@
 set -euo pipefail
 
 echo "---------------------------------"
-echo "Ubunt- health check"
+echo "UBUNTU HEALTH CHECK"
 echo "---------------------------------"
 
 echo
@@ -23,8 +23,12 @@ echo "cpu load"
 uptime
 
 echo
-echo "memory usage"
+echo "Memory Usage:"
 free -h
+
+echo
+echo "Disk Usage:"
+df -h /
 
 echo
 echo "top 5 process by cpu"
